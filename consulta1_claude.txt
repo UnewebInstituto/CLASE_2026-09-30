@@ -1,0 +1,94 @@
+Aquí tienes una plantilla práctica. Reemplaza lo que está entre corchetes con los datos reales de tu juego.
+
+## 1. Instrucciones (cómo debe trabajar Claude)
+
+Este campo es para reglas estables que aplican a todos los chats del proyecto. Ejemplo:
+
+```
+ROL
+Eres un ingeniero senior de videojuegos 2D con experiencia en JavaScript
+(Canvas API) y Python. Ayudas a migrar un videojuego arcade desde
+HTML/CSS/JS a Python, para que se ejecute en la web.
+
+OBJETIVO DEL PROYECTO
+Migrar el juego [nombre del juego] manteniendo la jugabilidad idéntica:
+mismas físicas, velocidades, colisiones, puntuación y niveles.
+
+STACK DESTINO
+- Lenguaje: Python 3.11+
+- Motor: [Pygame + pygbag (WebAssembly) | PyScript/Pyodide | Brython |
+  Flask/FastAPI + Canvas]
+- Hosting: [GitHub Pages / Netlify / servidor propio]
+
+REGLAS DE MIGRACIÓN
+1. Antes de traducir código, explica brevemente qué hace el módulo JS.
+2. Conserva los nombres de funciones y variables en inglés, salvo que
+   indique lo contrario; usa snake_case en Python.
+3. Reemplaza requestAnimationFrame por el game loop del motor elegido,
+   usando delta time (no frames fijos).
+4. Reemplaza el DOM/CSS por el sistema de renderizado del motor; indica
+   qué estilos CSS se convierten en qué elementos gráficos.
+5. Señala diferencias de comportamiento entre JS y Python (división,
+   tipos, redondeo, asincronía) que puedan alterar la jugabilidad.
+6. Si algo no tiene equivalente directo, propón 2 alternativas con pros y
+   contras antes de elegir.
+
+FORMATO DE RESPUESTA
+- Responde en español; el código y los comentarios técnicos en inglés.
+- Entrega código completo por archivo, con su ruta (ej. src/player.py).
+- Al final de cada entrega: lista de pendientes y cómo probarlo.
+- No reescribas archivos que no cambiaron.
+
+CALIDAD
+- Código con tipado (type hints) y docstrings cortos.
+- Sugiere pruebas (pytest) para la lógica: colisiones, puntuación, niveles.
+- Si falta información, pregúntame antes de asumir.
+```
+
+## 2. Memoria y contexto (qué debe saber siempre)
+
+Aquí va la información de referencia. Te conviene dividirla en archivos cargados al conocimiento del proyecto y en hechos que Claude debe recordar.
+
+**Archivos para subir al proyecto**
+
+| Archivo | Para qué sirve |
+|---|---|
+| `index.html`, `style.css`, `game.js` (y módulos) | Código fuente original, la base de la migración |
+| `ESTRUCTURA.md` | Árbol de carpetas actual y propuesto en Python |
+| `MECANICAS.md` | Reglas del juego: controles, vidas, puntuación, enemigos, niveles, velocidades |
+| `MAPEO_JS_PYTHON.md` | Tabla de equivalencias (función JS → función Python, estado de la migración) |
+| `DECISIONES.md` | Decisiones técnicas tomadas y su motivo (por ej., "se usa pygbag por X") |
+| `assets/` (lista) | Sprites, sonidos y fuentes, con formatos y tamaños |
+
+**Ejemplo de `MECANICAS.md`**
+
+```
+Juego: [nombre]
+Resolución: 800x600 | FPS objetivo: 60
+Controles: flechas = mover, espacio = disparar, P = pausa
+Jugador: 3 vidas, velocidad 5 px/frame, cooldown de disparo 250 ms
+Enemigos: [tipos, patrones de movimiento, puntos por cada uno]
+Niveles: [cuántos, cómo aumenta la dificultad]
+Game over: vidas = 0 → pantalla de puntuación y reinicio
+Persistencia: high score en localStorage (en Python: [alternativa])
+```
+
+**Ejemplo de hechos de contexto** (para que Claude los mantenga presentes)
+
+```
+- Estado actual: migrados player y input; pendientes enemigos, colisiones, audio.
+- Restricción: debe correr en el navegador sin instalar nada.
+- Público: [estudiantes / portafolio / cliente].
+- Plazo: [fecha].
+- Lo que NO se debe cambiar: la sensación de control y la curva de dificultad.
+- Riesgos conocidos: rendimiento de Pygame en WASM, carga de audio, tamaño del paquete.
+```
+
+## Consejos rápidos
+
+- **Instrucciones = reglas permanentes; archivos = datos que cambian.** No pegues el código dentro de las instrucciones.
+- **Decide el stack destino antes de empezar.** "Python para la web" puede significar cosas muy distintas (pygbag, Pyodide o un backend con Canvas), y cambia toda la arquitectura.
+- **Actualiza `MAPEO_JS_PYTHON.md` al terminar cada módulo**, para que el siguiente chat sepa por dónde ibas.
+- Si el código es muy grande, súbelo por módulos y no en un solo archivo.
+
+Si me dices cuál es el juego (tipo, tamaño del código) y qué stack prefieres, te preparo las instrucciones ya personalizadas y una hoja de ruta de la migración por fases.

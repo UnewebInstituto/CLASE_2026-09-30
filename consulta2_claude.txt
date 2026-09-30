@@ -1,0 +1,30 @@
+Se corresponden en parte. En mi respuesta anterior junté "Memoria y contexto" como si fueran un solo campo, pero en tu pantalla son **tres secciones distintas**. Así queda ajustado a lo que ves:
+
+## 1. Instrucciones (botón +)
+Coincide con lo que te propuse. Aquí van las reglas permanentes: rol de Claude, stack destino (Pygame + pygbag, Pyodide, etc.), reglas de migración, formato de respuesta e idioma. Puedes usar la plantilla de mi respuesta anterior tal cual.
+
+## 2. Contexto (botón +)
+Esta sección es la que corresponde a lo que llamé "archivos para subir". Aquí cargas el material de referencia que Claude consultará en cada chat del proyecto:
+- El código original (`index.html`, `style.css`, `game.js` y módulos)
+- `MECANICAS.md`: controles, vidas, puntuación, enemigos, niveles, velocidades
+- `ESTRUCTURA.md`: árbol de carpetas actual y propuesto en Python
+- `MAPEO_JS_PYTHON.md`: equivalencias de funciones y estado de la migración
+- `DECISIONES.md`: decisiones técnicas y su motivo
+- Lista de assets (sprites, sonidos, fuentes)
+
+## 3. Memoria (no se llena manualmente)
+Aquí está la diferencia principal. Tu pantalla dice que *"la memoria del proyecto aparecerá aquí después de algunos chats"*, así que no se redacta como las instrucciones. Se genera sola a partir de tus conversaciones dentro del proyecto, y es privada ("Solo tú"). Lo que sí puedes hacer:
+- En tus primeros chats, dejar dichos de forma explícita los datos que quieres que persistan: el stack elegido, el estado actual ("ya migré player e input; faltan enemigos y colisiones"), restricciones y lo que no debe cambiar de la jugabilidad.
+- Revisar luego lo que se guardó con **Ver memoria** y corregir lo que no sea exacto.
+
+## Dónde poner cada cosa
+
+| Tipo de información | Sección |
+|---|---|
+| Reglas de comportamiento y formato | Instrucciones |
+| Código, documentos de mecánicas, mapeo, decisiones | Contexto |
+| Estado de avance, preferencias y hechos que surgen al trabajar | Memoria (automática) |
+
+Como la memoria cambia con el avance, lo que debe ser fijo y confiable (mecánicas, decisiones técnicas) conviene ponerlo en **Contexto** y no depender de la memoria para eso.
+
+¿Quieres que te redacte ahora los archivos de contexto (`MECANICAS.md`, `DECISIONES.md`, `MAPEO_JS_PYTHON.md`) como plantillas listas para completar?

@@ -1,0 +1,27 @@
+
+Jensen Huang, CEO de Nvidia, afirmó que el 65% del PBI mundial será "aumentado" por la IA | Dolarhoy.com
+
+https://dolarhoy.com/empresas/jensen-huang-ceo-de-nvidia-afirmo-que-el-65-del-pbi-mundial-sera-aumentado-por-la-ia-202510171240
+
+Demis Hassabis, CEO de Google DeepMind: "Hacer una carrera no es redundante, te hace 10 veces mejor con la IA"
+
+https://www.elespanol.com/omicrono/20260721/demis-hassabis-ceo-google-deepmind-hacer-carrera-no-redundante-hace-veces-mejor-ia/1003744325543_0.amp.html
+
+
+anasofiarendonh@gmail.com;
+kattyborrel@gmail.com;
+carmenisabelgomez@gmail.com;
+pastortor@gmail.com;
+delemusrodriguez@outlook.com;
+darianmolinaedgar@gmail.com;
+icodarias300@gmail.com;
+
+
+echo "# CLASE_2026-09-30" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/UnewebInstituto/CLASE_2026-09-30.git
+git push -u origin main
+
